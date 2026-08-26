@@ -25,10 +25,10 @@ public class VacationService {
         System.out.println(listHolidays);
         List<HolidayResponse> holidaysInMonth = listHolidays.stream()
                 .filter(feriado -> feriado.getDate().getMonth() == request.getMonth())
-                .toList();
+                .collect(Collectors.toList());
         List<LocalDate> datasFeriados = holidaysInMonth.stream()
                 .map(HolidayResponse::getDate)
-                .toList();
+                .collect(Collectors.toList());
 
         List<VacationOptionDto> options = new ArrayList<>();
         LocalDate firstDayMonth = LocalDate.of(request.getYear(), request.getMonth(), 1);
